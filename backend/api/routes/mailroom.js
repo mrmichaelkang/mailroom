@@ -42,7 +42,6 @@ router.post("/add-package", async(req, res) => {
     })
   } else {
     const newPackage = await Package.create({
-      'id': data.id,
       'name': name,
       'trackingLink': trackingLink.link,
       'status': statusData.status,
