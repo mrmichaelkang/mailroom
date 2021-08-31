@@ -28,14 +28,6 @@ sequelize.sync()
   .then(result => console.log(result))
   .catch(error => console.error(error));
 
-
-if(process.env.NODE_ENV === 'production') {
-  app.use(express.static("../../frontend/build"));
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, "..", "..", "frontend", "build", "index.html"));
-  });
-}
-
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cors());
@@ -59,6 +51,13 @@ app.use((req,res,next) => {
 app.use("/api/v1", mailroom );
 app.use('/api/v1', userRoute);
 app.use("/auth", authRoute);
+
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static("../../frontend/build"));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, "..", "..", "frontend", "build", "index.html"));
+  });
+}
 
 app.listen(port, () => {
   console.log(`Listening on localhost:${port}`);
