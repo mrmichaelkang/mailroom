@@ -13,7 +13,6 @@ const Package = require('./models/Package');
 const User = require('./models/User');
 const passport = require('passport');
 const local = require('./strategies/local');
-const csp = require('express-csp-header');
 
 
 // TODO: 
@@ -31,13 +30,6 @@ sequelize.sync()
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static("../../frontend/build"));
 }
-
-app.use(csp({
-  policies: {
-    'default-src': [csp.NONE],
-    'img-src': [csp.SELF]
-  }
-}))
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
