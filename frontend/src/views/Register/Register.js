@@ -13,10 +13,6 @@ function Register() {
     event.preventDefault();
 
     // Grab form data
-    console.log(event.target[0].value);
-    console.log(event.target[2].value);
-    console.log(event.target[4].value);
-    console.log(event.target[6].value);
     const user = {
       firstName: event.target[0].value,
       lastName: event.target[2].value,
