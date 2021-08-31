@@ -13,7 +13,7 @@ const Package = require('./models/Package');
 const User = require('./models/User');
 const passport = require('passport');
 const local = require('./strategies/local');
-const cors = require('cors');
+
 
 // TODO: 
 // Set up CORS
@@ -26,10 +26,10 @@ sequelize.sync()
   .then(result => console.log(result))
   .catch(error => console.error(error));
 
-  if(process.env.NODE_ENV === 'production') {
-    app.use(express.static("../../frontend/build"));
-  }
-  
+
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static("../../frontend/build"));
+}
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
@@ -48,10 +48,6 @@ app.use((req,res,next) => {
   console.log(store);
   next();
 });
-
-app.use(cors({
-  origin: "https://mailroom-project.herokuapp.com"
-}));
 
 app.use("/api/v1", mailroom );
 app.use('/api/v1', userRoute);
