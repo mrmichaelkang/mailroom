@@ -83,7 +83,7 @@ function Login() {
         <Grid item >
           <div className={classes.registerContainer} >
             <Typography className={classes.registerText} variant="body1">
-              Don't have an account? <a className={classes.signUp}href="/register">Sign up</a>
+              Don't have an account? <a className={classes.signUp}href="https://mailroom-project.herokuapp.com/register">Sign up</a>
             </Typography>
           </div>
         </Grid>
