@@ -1,7 +1,5 @@
 const {remote} = require('webdriverio');
-const GOOGLE_CHROME_PATH="/app/.apt/usr/bin/google_chrome";
-// const CHROME_DRIVER_PATH="/app/.chromedriver/bin/chromedriver";
-
+const firefoxPath = '/app/vendor/firefox/firefox';
 
 function getXpath(carrier) {
   if(carrier === 'ups') {
@@ -25,32 +23,19 @@ function getXpath(carrier) {
 exports.getStatusFromUrl = async (url, carrier) => {
 
   let statusObject = {'status': ''};
+  
   const browser = await remote({
     capabilities: {
-      browserName: "chrome",
-      "binary": GOOGLE_CHROME_PATH,
-      // "chromedriverExecutable": CHROME_DRIVER_PATH,
-      "goog:chromeOptions": {
+      browserName: 'firefox',
+      "firefox_binary": firefoxPath,
+      "moz:firefoxOptions": {
         args: [
-          "--headless",
-          "--disable-gpu"
-        ],
-  
+          '--headless',
+          '--disable-gpu'  
+        ]
       }
-    }
-  })
-  
-  // const browser = await remote({
-  //   capabilities: {
-  //     browserName: 'chrome',
-  //     "moz:firefoxOptions": {
-  //       args: [
-  //         '--headless',
-  //         '--disable-gpu'  
-  //       ]
-  //     }
-  //   },
-  // });
+    },
+  });
 
   try {
     await browser.url(url);

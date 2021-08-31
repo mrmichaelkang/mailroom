@@ -4,8 +4,7 @@ const db = require('../util/database');
 const BityClient = require('bitly').BitlyClient;
 const token = process.env.TOKEN;
 const bitly = new BityClient(token);
-// const geckoDriver = require('geckodriver');
-const chromeDriver = require("chromedriver");
+const geckoDriver = require('geckodriver');
 const { getCarrierNameFromUrl, getStatusFromUrl } = require('../util/util');
 const Package = require("../models/Package");
 
@@ -26,16 +25,15 @@ router.get("/:uid/packages", async (req, res) => {
 })
 
 router.post("/add-package", async(req, res) => {
-  // geckoDriver.start();
-  chromeDriver.start();
-  
+  geckoDriver.start();
+
   const name = req.body.name;
   const uid = req.body.uid;
   const trackingLink = await bitly.shorten(req.body.trackingLink);
   const carrierData = getCarrierNameFromUrl(req.body.trackingLink);
   const statusData = await getStatusFromUrl(req.body.trackingLink, carrierData.carrier);
 
-  chromeDriver.stop();
+  geckoDriver.stop();
 
   if(statusData.status === "Unable to get status") {
     res.json({
