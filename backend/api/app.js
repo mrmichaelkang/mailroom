@@ -39,6 +39,7 @@ if(process.env.NODE_ENV === 'production') {
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cors());
+app.enable("trust proxy");
 app.use(session({
   secret: `${process.env.SECRET_KEY}`,
   cookie: {maxAge: 9000},
