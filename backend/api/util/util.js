@@ -1,5 +1,4 @@
 const {remote} = require('webdriverio');
-const firefoxPath = '/app/vendor/firefox/firefox';
 
 function getXpath(carrier) {
   if(carrier === 'ups') {
@@ -27,7 +26,7 @@ exports.getStatusFromUrl = async (url, carrier) => {
   const browser = await remote({
     capabilities: {
       browserName: 'firefox',
-      "firefox_binary": firefoxPath,
+      "firefox_binary": process.env.FIREFOX_PATH,
       "moz:firefoxOptions": {
         args: [
           '--headless',
