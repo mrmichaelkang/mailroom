@@ -6,8 +6,9 @@
   "scripts": {
     "build": "cd frontend && npm run build",
     "install-client": "cd frontend && npm install",
+    "install-server": "cd backend/api && npm install",
     "start": "cd backend/api && node app.js",
-    "heroku-postbuild": "npm run install-client && npm run build"
+    "heroku-postbuild": "npm run install-client && npm run install-server && npm run build"
   },
   "author": "Michael Kang",
   "license": "ISC"
