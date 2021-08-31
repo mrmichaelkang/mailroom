@@ -1,6 +1,6 @@
 const {remote} = require('webdriverio');
 const GOOGLE_CHROME_PATH="/app/.apt/usr/bin/google_chrome";
-const CHROME_DRIVER_PATH="/app/.chromedriver/bin/chromedriver";
+// const CHROME_DRIVER_PATH="/app/.chromedriver/bin/chromedriver";
 
 
 function getXpath(carrier) {
@@ -29,7 +29,7 @@ exports.getStatusFromUrl = async (url, carrier) => {
     capabilities: {
       browserName: "chrome",
       "binary": GOOGLE_CHROME_PATH,
-      "chromedriverExecutable": CHROME_DRIVER_PATH,
+      // "chromedriverExecutable": CHROME_DRIVER_PATH,
       "goog:chromeOptions": {
         args: [
           "--headless",
