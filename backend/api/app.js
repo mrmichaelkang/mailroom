@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const session = require('express-session');
 const store = new session.MemoryStore();
-const port = 5000;
+const port = process.env.PORT || 5000;
 const mailroom = require('./routes/mailroom');
 const userRoute = require('./routes/user');
 const authRoute = require('./routes/auth');
@@ -51,6 +51,10 @@ app.use(cors({
 app.use("/api/v1", mailroom );
 app.use('/api/v1', userRoute);
 app.use("/auth", authRoute);
+
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static("../../frontend/build"));
+}
 
 app.listen(port, () => {
   console.log(`Listening on localhost:${port}`);

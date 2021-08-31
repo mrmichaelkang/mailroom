@@ -1,0 +1,15 @@
+{
+  "name": "mailroom",
+  "version": "1.0.0",
+  "description": "A RESTful api for Mailroom web app",
+  "main": "app.js",
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "install-client": "cd frontend && npm install",
+    "start": "cd backend/api && node app.js",
+    "heroku-postbuild": "npm run install-client && npm run build"
+  },
+  "author": "Michael Kang",
+  "license": "ISC"
+
+}
