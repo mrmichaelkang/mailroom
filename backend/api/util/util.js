@@ -26,7 +26,7 @@ exports.getStatusFromUrl = async (url, carrier) => {
   const browser = await remote({
     capabilities: {
       browserName: 'firefox',
-      "firefox_binary": process.env.FIREFOX_PATH,
+      "firefox_binary": process.env.FIREFOX_BIN,
       "moz:firefoxOptions": {
         args: [
           '--headless',
