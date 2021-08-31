@@ -19,7 +19,6 @@ async function getPackages(uid) {
 
 
 router.get("/:uid/packages", async (req, res) => {
-  console.log(req.params.uid);
   data = await getPackages(req.params.uid);
   res.json(data);
 })

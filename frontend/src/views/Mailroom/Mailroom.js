@@ -32,7 +32,8 @@ function Mailroom() {
 
   const getPackageList =  async () => {
     try {
-      let res = await fetch(`https://mailroom-project.herokuapp.com/api/v1/${localStorage.getItem('uid')}/packages`);
+      const uid = localStorage.getItem('uid');
+      let res = await fetch(`https://mailroom-project.herokuapp.com/api/v1/${uid}/packages`);
       let data = await res.json();
 
       data.forEach(p => {
