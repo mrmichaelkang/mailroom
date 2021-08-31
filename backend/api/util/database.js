@@ -3,7 +3,10 @@ const Sequelize = require('sequelize');
 let db = {}
 const sequelize = new Sequelize(`${process.env.DB}`, `${process.env.DB_USER}`, `${process.env.DB_PASS}`, {
   dialect: 'postgres',
-  host: `${process.env.DB_HOST}`
+  host: `${process.env.DB_HOST}`,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 module.exports = openDB = async () => {
