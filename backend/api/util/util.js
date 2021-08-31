@@ -28,13 +28,14 @@ exports.getStatusFromUrl = async (url, carrier) => {
   const browser = await remote({
     capabilities: {
       browserName: "chrome",
+      "binary": GOOGLE_CHROME_PATH,
       "chromedriverExecutable": CHROME_DRIVER_PATH,
       "goog:chromeOptions": {
         args: [
           "--headless",
           "--disable-gpu"
         ],
-        "binary": GOOGLE_CHROME_PATH
+  
       }
     }
   })
