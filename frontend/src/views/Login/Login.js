@@ -18,7 +18,7 @@ function Login() {
       password: event.target[2].value
     }
 
-    const res = await fetch('/api/v1/login', {
+    const res = await fetch('https://mailroom-project.herokuapp.com/api/v1/login', {
       method: "POST",
       cache: "no-cache",
       headers: {

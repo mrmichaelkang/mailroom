@@ -32,7 +32,7 @@ function Mailroom() {
 
   const getPackageList =  async () => {
     try {
-      let res = await fetch(`/api/v1/${localStorage.getItem('uid')}/packages`);
+      let res = await fetch(`https://mailroom-project.herokuapp.com/api/v1/${localStorage.getItem('uid')}/packages`);
       let data = await res.json();
 
       data.forEach(p => {
@@ -51,7 +51,7 @@ function Mailroom() {
   }
 
   const handleAddPackage = newPackage => {
-    fetch('/api/v1/add-package', {
+    fetch('https://mailroom-project.herokuapp.com/api/v1/add-package', {
       method: 'POST',
       cache: 'no-cache',
       headers: {
@@ -77,7 +77,7 @@ function Mailroom() {
     packageList = packageList.filter(el =>  el.id !== id);
     setPackageList(packageList);
 
-    fetch(`/api/v1/delete-package/${id}`, {
+    fetch(`https://mailroom-project.herokuapp.com/api/v1/delete-package/${id}`, {
       method: "DELETE"
     })
     .then(res => console.log(res.status))
@@ -104,7 +104,7 @@ function Mailroom() {
     setUpdatedMessage("data.msg");
     
     try {
-      const res = await fetch(`/api/v1/update-package/${id}`, {
+      const res = await fetch(`https://mailroom-project.herokuapp.com/api/v1/update-package/${id}`, {
         method: "PUT"
       });
       const data = await res.json();

@@ -21,7 +21,7 @@ function Register() {
     }
 
     // Send data to backend 
-    const res = await fetch('/api/v1/signup', {
+    const res = await fetch('https://mailroom-project.herokuapp.com/api/v1/signup', {
       method: "POST",
       cache: "no-cache",
       headers: {

@@ -11,6 +11,5 @@
     "heroku-postbuild": "npm run install-client && npm run install-server && npm run build"
   },
   "author": "Michael Kang",
-  "license": "ISC",
-  "dependencies": {}
+  "license": "ISC"
 }

@@ -14,6 +14,7 @@ const User = require('./models/User');
 const passport = require('passport');
 const local = require('./strategies/local');
 const path = require('path');
+const cors = require('cors');
 
 
 // TODO: 
@@ -37,6 +38,7 @@ if(process.env.NODE_ENV === 'production') {
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(cors());
 app.use(session({
   secret: `${process.env.SECRET_KEY}`,
   cookie: {maxAge: 9000},
