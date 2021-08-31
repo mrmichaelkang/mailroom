@@ -26,6 +26,11 @@ sequelize.sync()
   .then(result => console.log(result))
   .catch(error => console.error(error));
 
+  if(process.env.NODE_ENV === 'production') {
+    app.use(express.static("../../frontend/build"));
+  }
+  
+
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(session({
@@ -51,10 +56,6 @@ app.use(cors({
 app.use("/api/v1", mailroom );
 app.use('/api/v1', userRoute);
 app.use("/auth", authRoute);
-
-if(process.env.NODE_ENV === 'production') {
-  app.use(express.static("../../frontend/build"));
-}
 
 app.listen(port, () => {
   console.log(`Listening on localhost:${port}`);
