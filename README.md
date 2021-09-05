@@ -2,7 +2,7 @@
 
 ## What is Mailroom?
 Mailroom is a package tracker web application that helps you keep track of all of your package links. (It currently only supports UPS, FEDEX, NAVAR and ONTRAC).
-Mailroom use webscraping teachnologies to get the status of your package link and updated the corresponding row.
+Mailroom use web-scraping technologies to get the status of your package link and updated the corresponding row.
 
 ## Technologies Used (PERN Stack)
 ### Frontend
