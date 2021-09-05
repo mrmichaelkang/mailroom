@@ -21,7 +21,7 @@ Mailroom use webscraping teachnologies to get the status of your package link an
 - pg
 - webdriverio
 
-## Challanges
+## Challenges
 There were many challenges faced during the creation of this app, such as the technologies to use or figuring out the design. This project started off with a tech stack
 React.js and Python with Flask. During the course of the project, I've decided switch to the PERN Stack (Postgresql, Express.js, React.js, Node.js) since scraping data 
 from Single Page Application was difficult with beautifulsoup4 and selenium and I would always end up with no success. With webdriverio, I was able to obtain 
