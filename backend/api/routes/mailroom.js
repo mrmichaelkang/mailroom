@@ -12,10 +12,6 @@ async function getPackages(uid) {
   return await Package.findAll({
     where: {
       userId: uid,
-      order: [
-        ['id', 'ASC']
-      ]
-      
     }
   });
 }
