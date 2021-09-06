@@ -15,6 +15,8 @@ function Mailroom() {
   const [errorMessage, setErrorMessage] = useState("");
   const [isUpdated, setIsUpdated] = useState(false);
   const [updatedMessage, setUpdatedMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState("");
 
 
   useEffect(() => {
@@ -52,6 +54,8 @@ function Mailroom() {
   }
 
   const handleAddPackage = newPackage => {
+    setIsLoading(true);
+    setLoadingMessage("Retrieving status from link. Please wait.");
     fetch('https://mailroom-project.herokuapp.com/api/v1/add-package', {
       method: 'POST',
       cache: 'no-cache',
@@ -63,6 +67,8 @@ function Mailroom() {
     .then(data => {
       setIsError(false);
       setErrorMessage("");
+      setIsLoading(false);
+      setLoadingMessage("");
       if(data.isError) {
         setIsError(true);
         setErrorMessage(data.status);
@@ -92,7 +98,7 @@ function Mailroom() {
       trackingLink: data.get('tracking-link'),
       uid: localStorage.getItem("uid")
     }
-
+    
     handleAddPackage(newPackage);
     setOpen(false);
   }
@@ -105,6 +111,8 @@ function Mailroom() {
     setUpdatedMessage("data.msg");
     
     try {
+      setIsLoading(true);
+      setLoadingMessage("Updating status. Please wait.");
       const res = await fetch(`https://mailroom-project.herokuapp.com/api/v1/update-package/${id}`, {
         method: "PUT"
       });
@@ -112,6 +120,8 @@ function Mailroom() {
       status.textContent = data.status;
       setIsUpdated(data.updated);
       setUpdatedMessage(data.msg);
+      setIsLoading(false);
+      setLoadingMessage("");
     } catch(err) {
       console.error(err);
     }
@@ -122,6 +132,7 @@ function Mailroom() {
       <Navbar/>
       {isError ? <FlashMessage errorMessage={errorMessage}/> : null}
       {isUpdated ? <FlashMessage updatedMessage={updatedMessage}/> : null}
+      {isLoading ? <FlashMessage loadingMessage={loadingMessage}/> : null}
       <div className="mailroom">
         <div className={classes.addContainer}>
           <Button onClick={openModal} variant='contained' className={classes.addBtn}>Add New Package</Button>

@@ -6,10 +6,11 @@ const msgStyles = makeStyles({
     opacity: 0,
     fontSize: "1.2rem",
     textAlign: "center",
+    padding: "30px",
     top: "8%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    animation: "$fade 3s linear",
+    animation: "$fade 5s linear",
   },
   hide: {
     display: "none"
@@ -20,6 +21,9 @@ const msgStyles = makeStyles({
   },
   error: {
     backgroundColor: "#FFE2E2",
+  },
+  loading: {
+    backgroundColor: "#99DDCC",
   },
   "@keyframes fade": {
     "0%": {
@@ -32,16 +36,14 @@ const msgStyles = makeStyles({
   }
 });
 
-function FlashMessage({errorMessage, updatedMessage}) {
+function FlashMessage({errorMessage, updatedMessage, loadingMessage}) {
   const classes = msgStyles();
-  // const code = localStorage.getItem("msgCode");
-  // const msg = localStorage.getItem('msg');
-  // const hasFlash = localStorage.getItem('hasFlash');
   
   return(
     <div className={classes.flashContainer}>
       <span className={errorMessage ? classes.error : classes.hide}>{errorMessage}</span>
       <span className={updatedMessage ? classes.success :classes.hide}>{updatedMessage}</span>
+      <span className={loadingMessage ? classes.loading : classes.hide}>{loadingMessage}</span>
     </div>
   )
 }
