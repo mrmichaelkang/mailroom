@@ -11,10 +11,13 @@ const Package = require("../models/Package");
 async function getPackages(uid) {
   return await Package.findAll({
     where: {
-      userId: uid
+      userId: uid,
+      order: [
+        db.sequelize.literal("id ASC")
+      ]
+      
     }
   });
-  // return await db.any("SELECT * FROM packages ORDER BY ID ASC");
 }
 
 
