@@ -13,7 +13,7 @@ async function getPackages(uid) {
     where: {
       userId: uid,
       order: [
-        db.sequelize.literal("id ASC")
+        ['id', 'ASC']
       ]
       
     }
